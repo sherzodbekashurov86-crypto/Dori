@@ -126,22 +126,24 @@ module.exports = {
   },
   
   requireLogin: (req, res, next) => {
-    if (!req.session.user) {
-      if (req.xhr || req.headers.accept.indexOf('json') > -1) {
-        return res.status(401).json({ error: "Avtorizatsiyadan o'ting!" });
-      }
-      return res.redirect('/?login_required=true');
+  if (!req.session.user) {
+    // accept header mavjudligini tekshiring
+    const isJson = req.xhr || (req.headers.accept && req.headers.accept.indexOf('json') > -1);
+    if (isJson) {
+      return res.status(401).json({ error: "Avtorizatsiyadan o'ting!" });
     }
-    next();
-  },
-  
-  requireAdmin: (req, res, next) => {
-    if (!req.session.user || req.session.user.role !== 'admin') {
-      if (req.xhr || req.headers.accept.indexOf('json') > -1) {
-        return res.status(403).json({ error: "Ruxsat etilmagan!" });
-      }
-      return res.status(403).render('404', { title: "Ruxsat etilmagan" });
-    }
-    next();
+    return res.redirect('/?login_required=true');
   }
-};
+  next();
+},
+
+requireAdmin: (req, res, next) => {
+  if (!req.session.user || req.session.user.role !== 'admin') {
+    const isJson = req.xhr || (req.headers.accept && req.headers.accept.indexOf('json') > -1);
+    if (isJson) {
+      return res.status(403).json({ error: "Ruxsat etilmagan!" });
+    }
+    return res.status(403).render('404', { title: "Ruxsat etilmagan" });
+  }
+  next();
+}}
