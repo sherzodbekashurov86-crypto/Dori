@@ -398,6 +398,81 @@ const diseases = [
     prevention_en: "Mental exercises, healthy diet",
     treatment_uz: "Dementia dorilar, psixik sinovi",
     treatment_en: "Dementia drugs, cognitive training"
+  },
+  {
+    id: uuidv4(),
+    name_uz: "Bel og'rishi (Lumbar Stenozis)",
+    name_en: "Lower Back Pain",
+    description_uz: "Beladagi nervlar shikastlanganlik va og'riq",
+    description_en: "Nerve compression and pain in lower back",
+    symptoms_uz: "Bel og'rishi, oyoqqa nur o'tishi, yurish qiyligi",
+    symptoms_en: "Back pain, leg numbness, difficulty walking",
+    causes_uz: "Noto'g'ri ko'tarish, yosh, spine degenerative disease",
+    causes_en: "Poor lifting, age, spinal degeneration",
+    prevention_uz: "To'g'ri ko'tarish, sport, to'g'ri postura",
+    prevention_en: "Proper lifting technique, exercise, good posture",
+    treatment_uz: "Fizioterapiya, og'riq dorilar, injekciya",
+    treatment_en: "Physical therapy, pain medications, injections"
+  },
+  {
+    id: uuidv4(),
+    name_uz: "Infeksion kasallik (UTI)",
+    name_en: "Urinary Tract Infection",
+    description_uz: "Siqinch yo'lining bakterial infeksiyasi",
+    description_en: "Bacterial infection of urinary tract",
+    symptoms_uz: "Siqinchda og'riq, tez siqinch istagoni, qizil siqinch",
+    symptoms_en: "Painful urination, frequent urination, red urine",
+    causes_uz: "Bakterial infeksiya, gigiyena kamoligi",
+    causes_en: "Bacterial infection, poor hygiene",
+    prevention_uz: "Ko'p suv ichish, gigiyena, tozalik",
+    prevention_en: "Drink plenty of water, hygiene, cleanliness",
+    treatment_uz: "Antibiotic, ko'p suv ichish",
+    treatment_en: "Antibiotics, hydration"
+  },
+  {
+    id: uuidv4(),
+    name_uz: "Immunodefitsit (HIV/AIDS)",
+    name_en: "HIV/AIDS",
+    description_uz: "Immun tizimini shikastlovchi viruslik kasallik",
+    description_en: "Viral infection that damages immune system",
+    symptoms_uz: "Charchanish, tez isitma, limfa tugunlarining shishi",
+    symptoms_en: "Fatigue, frequent fever, swollen lymph nodes",
+    causes_uz: "HIV virus, qonli kontakt, jinsiy kontakt",
+    causes_en: "HIV virus, blood contact, sexual contact",
+    prevention_uz: "Xavfsiz jinsiy munosabat, qon xavfsizligi",
+    prevention_en: "Safe sexual practices, blood safety",
+    treatment_uz: "Antiretroviral terapiya (ART)",
+    treatment_en: "Antiretroviral therapy (ART)"
+  },
+  {
+    id: uuidv4(),
+    name_uz: "Suyak sindomi (Osteoartrit)",
+    name_en: "Osteoarthritis",
+    description_uz: "Suyak oyog'ining degeneration va og'riq",
+    description_en: "Joint cartilage degeneration and pain",
+    symptoms_uz: "Oyog' og'rishi, harakat cheklashi, buyin shishi",
+    symptoms_en: "Joint pain, limited mobility, stiffness",
+    causes_uz: "Yosh, og'ir ishlash, travma",
+    causes_en: "Age, heavy work, injury",
+    prevention_uz: "Sport, sog'lom vazn, warm up",
+    prevention_en: "Exercise, healthy weight, warm-up",
+    treatment_uz: "Fizioterapiya, og'riq dorilar, injeksiya",
+    treatment_en: "Physical therapy, pain meds, injections"
+  },
+  {
+    id: uuidv4(),
+    name_uz: "Suyak qalini kasalligi (Myeloma)",
+    name_en: "Multiple Myeloma",
+    description_uz: "Suyak iliq kataklarga kasallik",
+    description_en: "Cancer of plasma cells in bone marrow",
+    symptoms_uz: "Suyakda og'riq, charchanish, qon kamoligi",
+    symptoms_en: "Bone pain, fatigue, anemia",
+    causes_uz: "Genetika, mutagenlar, yosh",
+    causes_en: "Genetics, mutagens, age",
+    prevention_uz: "Sog'lom jongovar, atrof-muhitni saqlash",
+    prevention_en: "Healthy lifestyle, environmental protection",
+    treatment_uz: "Kemoterapiya, stem cell transplantation",
+    treatment_en: "Chemotherapy, stem cell transplantation"
   }
 ];
 
@@ -424,7 +499,6 @@ const medicines = [
   { name_uz: "Sertraline", name_en: "Sertraline", category: "SSRI", type_uz: "SSRI", type_en: "SSRI" },
   { name_uz: "Atorvastatin", name_en: "Atorvastatin", category: "Statin", type_uz: "HMG-CoA Reductase Inhibitor", type_en: "HMG-CoA Reductase Inhibitor" },
   { name_uz: "Levothyroxine", name_en: "Levothyroxine", category: "Thyroid", type_uz: "Thyroid Hormone", type_en: "Thyroid Hormone" },
-  { name_uz: "Propranolol", name_en: "Propranolol", category: "Beta Blocker", type_uz: "Beta Blocker", type_en: "Beta Blocker" },
   { name_uz: "Allopurinol", name_en: "Allopurinol", category: "Xanthine Oxidase Inhibitor", type_uz: "Xanthine Oxidase Inhibitor", type_en: "Xanthine Oxidase Inhibitor" },
   { name_uz: "Amoxicillin", name_en: "Amoxicillin", category: "Antibiotic", type_uz: "Penicillin", type_en: "Penicillin" },
   { name_uz: "Doxycycline", name_en: "Doxycycline", category: "Antibiotic", type_uz: "Tetracycline", type_en: "Tetracycline" },
@@ -448,21 +522,26 @@ const diseasesMedicineRelations = [
   [7, 13], [7, 14], // Qorin - Omeprazole, Ranitidine
   [8, 11], [8, 12], // Allergiya - Cetirizine, Loratadine
   [9, 17], [9, 18], // Hepatit - Fluoxetine, Sertraline
-  [10, 29], [10, 30], // Uyqu buzilishi - Melatonin, Lorazepam
-  [11, 19], [11, 20], // Qon tomiri - Atorvastatin, Propranolol
-  [12, 21], [12, 0], // Tireoid - Levothyroxine, Iron Supplements
+  [10, 28], [10, 29], // Uyqu buzilishi - Melatonin, Lorazepam
+  [11, 19], [11, 20], // Qon tomiri - Atorvastatin, Levothyroxine
+  [12, 20], [12, 0], // Tireoid - Levothyroxine, Iron Supplements
   [13, 3], [13, 10], // Varicose veins - Amlodipine, Diclofenac
-  [14, 22], [14, 8], // Podagra - Allopurinol, Ibuprofen
-  [15, 23], [15, 24], // Bronxit - Amoxicillin, Doxycycline
-  [16, 25], [16, 16], // Eksema - Calcium Carbonate, Prednisolone
-  [17, 25], [17, 26], // Osteoporozis - Calcium Carbonate, Vitamin D3
+  [14, 21], [14, 8], // Podagra - Allopurinol, Ibuprofen
+  [15, 22], [15, 23], // Bronxit - Amoxicillin, Doxycycline
+  [16, 24], [16, 16], // Eksema - Calcium Carbonate, Prednisolone
+  [17, 24], [17, 25], // Osteoporozis - Calcium Carbonate, Vitamin D3
   [18, 15], [18, 16], // COPD - Salbutamol, Prednisolone
-  [19, 17], [19, 27], // OKR - Fluoxetine, Donepezil
+  [19, 17], [19, 26], // OKR - Fluoxetine, Donepezil
   [20, 18], [20, 17], // Depressiya - Sertraline, Fluoxetine
-  [21, 20], [21, 28], // Panik buzilishi - Sertraline, Gabapentin
+  [21, 19], [21, 27], // Panik buzilishi - Atorvastatin, Gabapentin
   [22, 10], [22, 8], // Buyn - Diclofenac, Ibuprofen
-  [23, 28], [23, 10], // Neuropatiya - Gabapentin, Diclofenac
-  [24, 27], [24, 26] // Dementia - Donepezil, Vitamin D3
+  [23, 27], [23, 10], // Neuropatiya - Gabapentin, Diclofenac
+  [24, 26], [24, 25], // Dementia - Donepezil, Vitamin D3
+  [25, 10], [25, 8], // Bel og'rishi - Diclofenac, Ibuprofen
+  [26, 22], [26, 23], // UTI - Amoxicillin, Doxycycline
+  [27, 19], [27, 29], // HIV/AIDS - Atorvastatin, Lorazepam
+  [28, 13], [28, 14], // Osteoarthritis - Omeprazole, Ranitidine
+  [29, 19], [29, 20] // Myeloma - Atorvastatin, Levothyroxine
 ];
 
 // Dorilarni yaratish
@@ -562,6 +641,71 @@ function insertDiseases() {
   });
 }
 
+// Tablelar yaratish
+function createTables() {
+  return new Promise((resolve) => {
+    const queries = [
+      `CREATE TABLE IF NOT EXISTS medicines (
+        id TEXT PRIMARY KEY,
+        name_uz TEXT,
+        name_en TEXT,
+        type_uz TEXT,
+        type_en TEXT,
+        category TEXT,
+        price REAL,
+        manufacturer_uz TEXT,
+        manufacturer_en TEXT,
+        description_uz TEXT,
+        description_en TEXT,
+        usage_uz TEXT,
+        usage_en TEXT,
+        dosage_uz TEXT,
+        dosage_en TEXT,
+        sideEffects_uz TEXT,
+        sideEffects_en TEXT,
+        warnings_uz TEXT,
+        warnings_en TEXT,
+        prescription BOOLEAN,
+        views INTEGER,
+        rating REAL,
+        createdDate TEXT
+      )`,
+      `CREATE TABLE IF NOT EXISTS diseases (
+        id TEXT PRIMARY KEY,
+        name_uz TEXT,
+        name_en TEXT,
+        description_uz TEXT,
+        description_en TEXT,
+        symptoms_uz TEXT,
+        symptoms_en TEXT,
+        causes_uz TEXT,
+        causes_en TEXT,
+        prevention_uz TEXT,
+        prevention_en TEXT,
+        treatment_uz TEXT,
+        treatment_en TEXT,
+        views INTEGER
+      )`,
+      `CREATE TABLE IF NOT EXISTS recommended_medicines (
+        disease_id TEXT,
+        medicine_id TEXT,
+        PRIMARY KEY (disease_id, medicine_id),
+        FOREIGN KEY (disease_id) REFERENCES diseases(id),
+        FOREIGN KEY (medicine_id) REFERENCES medicines(id)
+      )`
+    ];
+
+    let completed = 0;
+    queries.forEach((query) => {
+      db.run(query, (err) => {
+        if (err) console.error("Table yaratishda xato:", err);
+        completed++;
+        if (completed === queries.length) resolve();
+      });
+    });
+  });
+}
+
 // Bog'liqliklar yaratish
 function insertRelations() {
   return new Promise((resolve) => {
@@ -591,6 +735,10 @@ async function seedDatabase() {
   console.log("\n📊 Bazaga ma'lumot qo'shish boshlandi...\n");
 
   try {
+    // Tablelar yaratish
+    await createTables();
+    console.log("\n✅ Tablelar tayyor!\n");
+
     await insertMedicines();
     console.log("\n✅ Barcha dorilar qo'shildi!\n");
 
